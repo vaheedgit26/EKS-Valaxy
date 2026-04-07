@@ -4,13 +4,17 @@ variable env { type = string }
 
 variable cluster_version { type = string }
 
-variable subnet_ids { type = list(string) }
+variable cluster_subnet_ids { type = list(string) }
 
 variable endpoint_private_access { type = bool }
 
 variable endpoint_public_access { type = bool }
 
 variable eks_cluster_security_group_ids { type = list(string) }
+
+
+#############################################             Node Group Variables            #################################################
+variable node_subnet_ids { type = list(string) }
 
 variable node_instance_types { type = list(string) }
 
@@ -26,4 +30,11 @@ variable "node_disk_size" {
     error_message = "Disk size must be between 8GB and 25GB."
   }
 }
+
+variable "desired_capacity" { type = number }
+variable "min_size" { type = number }
+variable "max_size" { type = number }
+
+  
+
 
