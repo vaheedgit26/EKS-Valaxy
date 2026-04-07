@@ -9,6 +9,7 @@ locals {
 
 data "tls_certificate" "eks_certificate" {
   url = local.oidc_issuer
+  depends_on = [aws_eks_cluster.main]
 }
 
 #----------------------------------------------------------------------------------------------------------#
