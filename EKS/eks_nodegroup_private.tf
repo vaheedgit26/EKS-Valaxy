@@ -24,7 +24,8 @@ resource "aws_eks_node_group" "main" {
 
   # Apply labels to each EC2 instance for easier scheduling and management in Kubernetes
   labels = {
-    "env"  = var.env
+    "project" = var.project
+    "env"     = var.env
   }
 
   depends_on = [
