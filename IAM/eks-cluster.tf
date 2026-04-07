@@ -15,7 +15,7 @@ resource "aws_eks_cluster" "main" {
     security_group_ids      = var.eks_cluster_security_group_ids
 
     # List of CIDRs allowed to reach the public endpoint
-    public_access_cidrs     = var.cluster_endpoint_public_access_cidrs    
+    # public_access_cidrs     = var.cluster_endpoint_public_access_cidrs    
   }
 
   # Ensure IAM policy attachments complete before cluster creation
