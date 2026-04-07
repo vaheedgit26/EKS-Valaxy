@@ -3,7 +3,7 @@
 # -------------------------------------------------------------------------------
 resource "aws_eks_cluster" "main" {
 
-  name     = "${local.resource_name}-eks-cluster"
+  name     = "${local.eks_cluster_name}"
   version  = var.cluster_version
   role_arn = aws_iam_role.eks_cluster.arn
 
@@ -28,7 +28,7 @@ resource "aws_eks_cluster" "main" {
   ]
 
   tags = {
-    Name      = "${local.resource_name}-eks-cluster"
+    Name      = "${local.eks_cluster_name}"
     Env       = var.env
     Project   = var.project
     Terraform = true
