@@ -13,3 +13,5 @@ variable endpoint_public_access { type = bool }
 variable eks_cluster_security_group_ids { type = list(string) }
 
 variable node_instance_types { type = list(string) }
+
+variable node_capacity_type { type = string }
