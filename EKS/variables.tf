@@ -16,6 +16,7 @@ variable eks_cluster_security_group_ids { type = list(string) }
 
 
 #############################################             Node Group Variables           #################################################
+
 variable node_subnet_ids { type = list(string) }
 
 variable node_instance_types { type = list(string) }
