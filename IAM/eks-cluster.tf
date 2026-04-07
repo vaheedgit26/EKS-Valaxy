@@ -15,17 +15,17 @@ resource "aws_eks_cluster" "main" {
     security_group_ids      = var.eks_cluster_security_group_ids
   }
 
+  access_config {
+    authentication_mode = "API_AND_CONFIG_MAP" # Three options: CONFIG_MAP, API, API_AND_CONFIG_MAP
+    bootstrap_cluster_creator_admin_permissions = true
+  }
+
   # Ensure IAM policy attachments complete before cluster creation
   # Helps avoid race conditions during provisioning and destroy
   depends_on = [
     aws_iam_role_policy_attachment.eks_cluster_policy,
     aws_iam_role_policy_attachment.eks_vpc_resource_controller
   ]
-  
-  access_config {
-    authentication_mode = "API_AND_CONFIG_MAP" # Three options: CONFIG_MAP, API, API_AND_CONFIG_MAP
-    bootstrap_cluster_creator_admin_permissions = true
-  }
 
   tags = {
     Name      = "${local.resource_name}-eks-cluster"
