@@ -16,4 +16,7 @@ variable node_instance_types { type = list(string) }
 
 variable node_capacity_type { type = string }
 
-variable node_disk_size { type = number }
+variable node_disk_size { 
+  type = number 
+  default = 8
+}
