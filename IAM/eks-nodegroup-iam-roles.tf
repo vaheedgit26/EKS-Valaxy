@@ -1,6 +1,6 @@
 resource "aws_iam_role" "eks_nodegroup_role" {
   # IAM role name following environment and division-based naming
-  name = "${local.name}-eks-nodegroup-role"
+  name = "${local.resource_name}-eks-nodegroup-role"
 
   # Trust policy: allow EC2 service to assume this role
   assume_role_policy = jsonencode({
@@ -15,7 +15,7 @@ resource "aws_iam_role" "eks_nodegroup_role" {
   })
 
   tags = {
-    Name      = "${var.project}-${var.env}-eks-node-group-role"
+    Name      = "${local.resource_name}-eks-node-group-role"
     Env       = var.env
     Project   = var.project
     Terraform = true
