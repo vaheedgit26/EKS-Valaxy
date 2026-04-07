@@ -1,7 +1,7 @@
 # EKS Node Group
 resource "aws_eks_node_group" "main" {
   cluster_name    = aws_eks_cluster.main.name
-  node_group_name = "${local.resource_name}-node-group"
+  node_group_name = "${local.eks_cluster_name}-node-group"
   node_role_arn   = aws_iam_role.eks_nodegroup_role.arn
   subnet_ids      = var.node_subnet_ids
   instance_types  = var.node_instance_types
@@ -34,7 +34,7 @@ resource "aws_eks_node_group" "main" {
   ]
 
   tags = {
-    Name      = "${local.resource_name}-node-group"
+    Name      = "${local.eks_cluster_name}-node-group"
     Env       = var.env
     Project   = var.project
     Terraform = true
