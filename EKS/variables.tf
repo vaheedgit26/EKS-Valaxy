@@ -2,6 +2,8 @@ variable project { type = string }
 
 variable env { type = string }
 
+#############################################             Cluster Variables            #################################################
+
 variable cluster_version { type = string }
 
 variable cluster_subnet_ids { type = list(string) }
@@ -13,7 +15,7 @@ variable endpoint_public_access { type = bool }
 variable eks_cluster_security_group_ids { type = list(string) }
 
 
-#############################################             Node Group Variables            #################################################
+#############################################             Node Group Variables           #################################################
 variable node_subnet_ids { type = list(string) }
 
 variable node_instance_types { type = list(string) }
