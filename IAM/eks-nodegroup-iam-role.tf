@@ -1,5 +1,4 @@
 resource "aws_iam_role" "eks_nodegroup_role" {
-  # IAM role name following environment and division-based naming
   name = "${local.resource_name}-eks-nodegroup-role"
 
   # Trust policy: allow EC2 service to assume this role
