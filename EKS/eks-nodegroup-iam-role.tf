@@ -1,5 +1,5 @@
 resource "aws_iam_role" "eks_nodegroup_role" {
-  name = "${local.resource_name}-eks-nodegroup-role"
+  name = "${local.eks_cluster_name}-nodegroup-role"
 
   # Trust policy: allow EC2 service to assume this role
   assume_role_policy = jsonencode({
@@ -14,9 +14,9 @@ resource "aws_iam_role" "eks_nodegroup_role" {
   })
 
   tags = {
-    Name      = "${local.resource_name}-eks-nodegroup-role"
-    Env       = var.env
+    Name      = "${local.eks_cluster_name}-nodegroup-role"
     Project   = var.project
+    Env       = var.env
     Terraform = true
   }
 }
