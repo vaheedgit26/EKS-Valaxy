@@ -19,6 +19,15 @@ resource "aws_eks_node_group" "main" {
     max_unavailable = 1
   }
 
+  # Force node group update when EKS AMI version changes
+  force_update_version = true
+
+  # Apply labels to each EC2 instance for easier scheduling and management in Kubernetes
+  labels = {
+    "env"  = var.environment_name
+    "team" = var.business_division
+  }
+
   depends_on = [
     aws_iam_role_policy_attachment.node_AmazonEKSWorkerNodePolicy,
     aws_iam_role_policy_attachment.node_AmazonEKS_CNI_Policy,
