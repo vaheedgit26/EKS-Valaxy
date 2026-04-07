@@ -5,7 +5,7 @@ resource "aws_eks_node_group" "main" {
   node_role_arn   = aws_iam_role.eks_nodegroup_role.arn
   subnet_ids      = var.node_subnet_ids
   instance_types  = var.node_instance_types
-  capacity_type   = var.node_capacity_type   ON_DEMAND/ SPOT
+  capacity_type   = var.node_capacity_type   # ON_DEMAND/ SPOT
   disk_size       = var.node_disk_size
 
   scaling_config {
@@ -34,8 +34,9 @@ resource "aws_eks_node_group" "main" {
   ]
 
   tags = {
-    Name    = "${local.resource_name}-node-group"
-    Env     = var.env
-    Project = var.project
+    Name      = "${local.resource_name}-node-group"
+    Env       = var.env
+    Project   = var.project
+    Terraform = true
   }
 }
