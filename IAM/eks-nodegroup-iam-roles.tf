@@ -15,7 +15,7 @@ resource "aws_iam_role" "eks_nodegroup_role" {
   })
 
   tags = {
-    Name      = "${local.resource_name}-eks-node-group-role"
+    Name      = "${local.resource_name}-eks-nodegroup-role"
     Env       = var.env
     Project   = var.project
     Terraform = true
