@@ -1,15 +1,15 @@
 ################################################
-# Usage: bash create-vpc.sh    #
+# Usage: bash create-vpc.sh    #################
 ################################################
-# This script takes 'bucket', 'env', region' and 'project_name' as inputs from previous '0-s3' calling module 
+# This script takes 'bucket', 'env', region' and 'project_name' as inputs from previous '00-s3-create' calling module 
 
 #!/usr/bin/env bash
 set -e
 
-BUCKET=$(terraform -chdir=../../0-s3 output -raw bucket_id)              
-ENV=$(terraform -chdir=../../0-s3 output -raw env)                       
-REGION=$(terraform -chdir=../../0-s3 output -raw region)                 
-PROJECT_NAME=$(terraform -chdir=../../0-s3 output -raw project_name)
+BUCKET=$(terraform -chdir=../../00-s3-create output -raw bucket_id)              
+ENV=$(terraform -chdir=../../00-s3-create output -raw env)                       
+REGION=$(terraform -chdir=../../00-s3-create output -raw region)                 
+PROJECT_NAME=$(terraform -chdir=../../00-s3-create output -raw project_name)
 
 echo """
 📄 Details:
