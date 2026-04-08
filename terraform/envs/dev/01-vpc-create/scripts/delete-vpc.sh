@@ -1,5 +1,5 @@
 ###########################################################
-# Usage: bash delete-vpc.sh  #
+# Usage: bash delete-vpc.sh <project_name> <env> <region> #
 ###########################################################
 # <project_name> <env> <region>
 #!/usr/bin/env bash
