@@ -1,14 +1,14 @@
 ###########################################################
-# Usage: bash delete-vpc.sh <project_name> <env> <region> #
+# Usage: bash delete-vpc.sh  #
 ###########################################################
-
-#!/bin/bash
+# <project_name> <env> <region>
+#!/usr/bin/env bash
 set -e
 
-BUCKET=$(terraform -chdir=../../0-s3 output -raw bucket_id)              
-ENV=$(terraform -chdir=../../0-s3 output -raw env)                       
-REGION=$(terraform -chdir=../../0-s3 output -raw region)                 
-PROJECT_NAME=$(terraform -chdir=../../0-s3 output -raw project_name)
+BUCKET=$(terraform -chdir=../../00-s3-create output -raw bucket_id)              
+ENV=$(terraform -chdir=../../00-s3-create output -raw env)                       
+REGION=$(terraform -chdir=../../00-s3-create output -raw region)                 
+PROJECT_NAME=$(terraform -chdir=../../00-s3-create output -raw project_name)
 
 echo """
 📄 Details:
