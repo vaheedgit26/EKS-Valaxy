@@ -29,7 +29,7 @@ cd ..
 
 terraform init -upgrade \
   -backend-config="bucket=${BUCKET}" \
-  -backend-config="key=${ENV}/vpc/terraform.tfstate" \
+  -backend-config="key=${PROJECT_NAME}/${ENV}/vpc/terraform.tfstate" \
   -backend-config="region=${REGION}" \
   -backend-config="encrypt=true" \
   -backend-config="use_lockfile=true"
