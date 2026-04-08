@@ -9,7 +9,7 @@ resource "aws_ecr_repository" "main" {
   }
 
   tags = {
-    Name    = "${var.project}-${each.value}"
+    Name    = "${var.project}-${var.env}-${each.value}"
     Env     = var.env
     Project = var.project
   }
