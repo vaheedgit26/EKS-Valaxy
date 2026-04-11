@@ -3,7 +3,7 @@ module "bastion_sg" {
   source = "git::https://github.com/vaheedgit26/Infra.git//modules/sg"
   project_name = var.project_name
   env = var.env
-  vpc_id = var.vpc_id
+  vpc_id = module.vpc.vpc_id
   sg_name = "bastion_sg"
   sg_description = "Bastion Instance Security Group"
   common_tags = var.common_tags
