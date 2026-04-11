@@ -27,6 +27,7 @@ module "nat_instance" {
   vpc_cidr                                = module.vpc.vpc_cidr
   ami_id                                  = "ami-0ddfba243cbee3768" 
   public_key_name                         = "mumbai-1"
+  instance_type                           = "t3.micro"     # var.instance_type
 
   public_subnet_ID_to_launch_nat_instance = module.vpc.public_subnet_ids[0]
   public_subnet_cidr                      = module.vpc.public_subnet_cidr       # for private instance sg purpose
@@ -64,7 +65,7 @@ module "ec2" {
 
   ami_id                      = "ami-0ddfba243cbee3768"
   public_key_name             = "mumbai-1"
-  instance_type               = "t3.micro"
+  instance_type               = "t3.micro"                    # var.instance_type
   sg_ids                      = [module.bastion_sg.sg_id]
   subnet_id                   = module.vpc.public_subnet_ids[0]  # "subnet-088e8443a70102e2a" #1a
   associate_public_ip_address = true
