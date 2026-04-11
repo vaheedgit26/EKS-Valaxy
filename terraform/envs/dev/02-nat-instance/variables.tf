@@ -9,6 +9,10 @@ variable "private_subnet_cidr" {}
 variable "public_subnet_ids" { type = list }
 # variable "private_subnet_ids" { type = list }
 
+variable "bucket_name" {}
+variable "vpc_state_key" {}
+variable "region" {}
+
 #############  Tags ###############################################
 variable "project_name" { default = "expense" }
 variable "env" { default = "dev" }
