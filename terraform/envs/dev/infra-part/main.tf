@@ -45,5 +45,35 @@ module "nat_instance" {
   project_name = var.project_name
   env          = var.env
   common_tags  = local.common_tags
+}
 
+# Security Group for Bastion Host
+module "bastion_sg" {
+  source = "git::https://github.com/vaheedgit26/Infra.git//modules/sg"
+  project_name = var.project_name
+  env = var.env
+  vpc_id = var.vpc_id
+  sg_name = "bastion_sg"
+  sg_description = "Bastion Instance Security Group"
+  common_tags = var.common_tags
+}
+
+# Bastion Host
+module "ec2" {
+  source = "git::https://github.com/vaheedgit26/Infra.git//modules/ec2"
+
+  ami_id                      = "ami-0ddfba243cbee3768"
+  public_key_name             = "mumbai-1"
+  instance_type               = "t3.micro"
+  sg_ids                      = [module.bastion_sg.sg_id]
+  subnet_id                   = module.vpc.public_subnet_ids[0]  # "subnet-088e8443a70102e2a" #1a
+  associate_public_ip_address = true
+
+  # is_nat_instance             = var.is_nat_instance  # creates NAT instance if true
+  # is_eip_required             = var.is_eip_required
+  # user_data                   = file("${path.module}/nat_user_data.sh")
+
+  project_name                = var.project_name
+  env                         = var.env
+  common_tags                 = var.common_tags
 }
