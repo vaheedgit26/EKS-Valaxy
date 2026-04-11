@@ -5,8 +5,8 @@ module "nat_instance" {
 
   vpc_id                                  = var.vpc_id
   vpc_cidr                                = var.vpc_cidr
-  ami_id                                  = var.ami_id          #"ami-0ddfba243cbee3768" 
-  public_key_name                         = var.public_key_name #"mumbai-1"
+  ami_id                                  = "ami-0ddfba243cbee3768" 
+  public_key_name                         = "mumbai-1"
   public_subnet_ID_to_launch_nat_instance = var.public_subnet_ids[0]
   public_subnet_cidr                      = var.public_subnet_cidr  # for private instance sg purpose
   private_subnet_cidr                     = var..private_subnet_cidr # for database instance sg purpose
