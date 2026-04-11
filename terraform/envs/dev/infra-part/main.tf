@@ -59,6 +59,15 @@ module "bastion_sg" {
   common_tags = var.common_tags
 }
 
+resource "aws_security_group_rule" "bastion_internet" {
+  type              = "ingress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "-1"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = module.bastion_sg.sg_id    # aws_security_group.sg_nat_instance.id
+}
+
 # Bastion Host
 module "ec2" {
   source = "git::https://github.com/vaheedgit26/Infra.git//modules/ec2"
