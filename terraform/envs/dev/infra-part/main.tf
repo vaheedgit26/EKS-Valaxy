@@ -25,9 +25,9 @@ module "nat_instance" {
 
   vpc_id                                  = module.vpc.vpc_id
   vpc_cidr                                = module.vpc.vpc_cidr
-  ami_id                                  = "ami-0ddfba243cbee3768" 
-  public_key_name                         = "mumbai-1"
-  instance_type                           = "t3.micro"     # var.instance_type
+  ami_id                                  = var.ami_id            #"ami-0ddfba243cbee3768" 
+  public_key_name                         = var.public_key_name   #"mumbai-1"
+  instance_type                           = "t3.micro"            # var.instance_type
 
   public_subnet_ID_to_launch_nat_instance = module.vpc.public_subnet_ids[0]
   public_subnet_cidr                      = module.vpc.public_subnet_cidr       # for private instance sg purpose
@@ -63,12 +63,14 @@ module "bastion_sg" {
 module "ec2" {
   source = "git::https://github.com/vaheedgit26/Infra.git//modules/ec2"
 
-  ami_id                      = "ami-0ddfba243cbee3768"
-  public_key_name             = "mumbai-1"
-  instance_type               = "t3.micro"                    # var.instance_type
+  ami_id                      = var.ami_id                       # "ami-0ddfba243cbee3768"
+  public_key_name             = var.public_key_name              # "mumbai-1"
+  instance_type               = "t3.micro"                       # var.instance_type
   sg_ids                      = [module.bastion_sg.sg_id]
   subnet_id                   = module.vpc.public_subnet_ids[0]  # "subnet-088e8443a70102e2a" #1a
   associate_public_ip_address = true
+
+  what_type_instance          = "bastion"
 
   # is_nat_instance             = var.is_nat_instance  # creates NAT instance if true
   # is_eip_required             = var.is_eip_required
