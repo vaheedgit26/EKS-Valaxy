@@ -6,7 +6,7 @@ module "bastion_sg" {
   vpc_id = module.vpc.vpc_id
   sg_name = "bastion_sg"
   sg_description = "Bastion Instance Security Group"
-  common_tags = var.common_tags
+  common_tags = local.common_tags
 }
 
 resource "aws_security_group_rule" "bastion_internet" {
