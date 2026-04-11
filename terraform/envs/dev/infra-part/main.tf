@@ -27,10 +27,15 @@ module "nat_instance" {
   vpc_cidr                                = module.vpc.vpc_cidr
   ami_id                                  = "ami-0ddfba243cbee3768" 
   public_key_name                         = "mumbai-1"
+
   public_subnet_ID_to_launch_nat_instance = module.vpc.public_subnet_ids[0]
   public_subnet_cidr                      = module.vpc.public_subnet_cidr       # for private instance sg purpose
   private_subnet_cidr                     = module.vpc.private_subnet_cidr      # for database instance sg purpose
-  # private_subnet_ids                      = local.private_subnet_ids #module.vpc.private_subnet_ids 
+  # private_subnet_ids                    = local.private_subnet_ids #module.vpc.private_subnet_ids 
+
+  private_route_table_id                  = module.vpc.private_route_table_id
+  database_route_table_id                 = module.vpc.database_route_table_id
+
   remote_ip_to_connect_nat_instance       = "0.0.0.0/0"       # "${var.remote_ip_to_connect_nat_instance}/32"
 
   is_nat_instance = true
