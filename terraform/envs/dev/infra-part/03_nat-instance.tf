@@ -18,7 +18,7 @@ module "nat_instance" {
   private_route_table_id                  = module.vpc.private_route_table_id
   database_route_table_id                 = module.vpc.database_route_table_id
 
-  remote_ip_to_connect_nat_instance       = "0.0.0.0/0"       # "${var.remote_ip_to_connect_nat_instance}/32"
+  remote_ip_to_connect_nat_instance       = "0.0.0.0/0"      # For nat-instance sg  # "${var.remote_ip_to_connect_nat_instance}/32"
 
   # is_nat_instance = true
   is_eip_required = false
