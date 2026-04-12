@@ -15,6 +15,9 @@ terraform {
       version = "~> 4.0"
     }
   }
+
+  # Remote Backend
+  backend "s3" {}   
 }
 
 provider "aws" {
