@@ -29,7 +29,7 @@ variable "node_disk_size" {
   default     = 8
 
   validation {
-    condition     = var.node_disk_size >= 10 && var.node_disk_size <= 1000
+    condition     = var.node_disk_size >= 8 && var.node_disk_size <= 25
     error_message = "Disk size must be between 8GB and 25GB."
   }
 }
