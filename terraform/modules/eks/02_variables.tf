@@ -8,9 +8,9 @@ variable cluster_version { type = string }
 
 variable cluster_subnet_ids { type = list(string) }
 
-variable endpoint_private_access { type = bool }
+variable cluster_endpoint_private_access { type = bool }
 
-variable endpoint_public_access { type = bool }
+variable cluster_endpoint_public_access { type = bool }
 
 variable eks_cluster_security_group_ids { type = list(string) }
 
