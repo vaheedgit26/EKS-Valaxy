@@ -18,7 +18,7 @@ module "rds" {
 
   project               = "pharma"
   env                   = "dev"
-  subnet_ids            = module.vpc.private_rds_subnet_ids
+  subnet_ids            = module.vpc.database_subnet_ids
   vpc_id                = module.vpc.vpc_id
   eks_security_group_id = module.eks.cluster_security_group_id
   db_name               = "pharmadb"
