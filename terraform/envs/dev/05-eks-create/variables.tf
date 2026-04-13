@@ -1,3 +1,8 @@
+variable "region" {}
+variable "project" {}
+variable "env" {}
+
+
 variable "db_password" {
   description = "Master password for the RDS PostgreSQL database"
   type        = string
