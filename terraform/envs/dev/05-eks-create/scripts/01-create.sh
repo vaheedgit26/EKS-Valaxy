@@ -55,6 +55,7 @@ echo "================================="
 terraform apply 
 # terraform apply infra.tfplan    # -auto-approve
 
+##############################################################################
 # In VPC :: 
 #   project_name
 #   env
