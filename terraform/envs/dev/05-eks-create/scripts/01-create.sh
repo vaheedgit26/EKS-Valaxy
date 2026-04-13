@@ -54,7 +54,13 @@ terraform plan \
 echo "================================="
 echo " Step 4: Applying Terraform plan "
 echo "================================="
-terraform apply 
+terraform apply \
+  -var="project=$PROJECT_NAME" \
+  -var="env=$ENV" \
+  -var="region=$REGION" \
+  -var="s3_bucket_id=$BUCKET" \
+  -var="vpc_remote_state_key=${PROJECT_NAME}/${ENV}/vpc/terraform.tfstate"
+  
 # terraform apply infra.tfplan    # -auto-approve
 
 ##############################################################################
