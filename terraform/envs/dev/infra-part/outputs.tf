@@ -17,3 +17,9 @@ output "database_subnet_ids" {
   value       = module.vpc.database_subnet_ids
   description = "Database subnets for RDS"
 }
+
+output "bastion_host_sg_id" {
+  value       = module.bastion_sg.sg_id
+  description = "Bastion host security group id"
+}
+
