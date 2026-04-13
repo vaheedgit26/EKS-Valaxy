@@ -9,6 +9,7 @@ module "bastion_sg" {
   common_tags = local.common_tags
 }
 
+# Security Group Rule for Bastion Host
 resource "aws_security_group_rule" "bastion_internet" {
   type              = "ingress"
   from_port         = 22
@@ -18,6 +19,7 @@ resource "aws_security_group_rule" "bastion_internet" {
   security_group_id = module.bastion_sg.sg_id                     # aws_security_group.sg_nat_instance.id
 }
 
+# Bastion Host
 module "bastion_ec2" {
   source = "git::https://github.com/vaheedgit26/Infra.git//modules/ec2"
 
