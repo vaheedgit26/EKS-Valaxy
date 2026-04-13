@@ -28,10 +28,10 @@ variable node_capacity_type { type = string }  # ON_DEMAND/ SPOT
 variable "node_disk_size" {
   type        = number
   description = "Disk size (in GB) for EKS worker nodes"
-  default     = 8
+  default     = 20  # minimum 20 GB
 
   validation {
-    condition     = var.node_disk_size >= 8 && var.node_disk_size <= 25
+    condition     = var.node_disk_size >= 8 && var.node_disk_size <= 50
     error_message = "Disk size must be between 8GB and 25GB."
   }
 }
