@@ -1,7 +1,7 @@
 data "aws_caller_identity" "current" {}
 
 module "eks" {
-  source = "../../modules/eks"
+  source = "../../../modules/eks"
 
   project             = var.project  # "pharma"
   env                 = var.env      # "dev"
@@ -19,7 +19,7 @@ module "eks" {
 }
 
 module "rds" {
-  source = "../../modules/rds"
+  source = "../../../modules/rds"
 
   project               = var.project  # "pharma"
   env                   = var.env      # "dev"
@@ -33,7 +33,7 @@ module "rds" {
 }
 
 module "ecr" {
-  source = "../../modules/ecr"
+  source = "../../../modules/ecr"
 
   project = var.project  # "pharma"
   env     = var.env      # "dev"
@@ -47,7 +47,7 @@ module "ecr" {
 }
 
 module "iam" {
-  source = "../../modules/iam"
+  source = "../../../modules/iam"
 
   project           = var.project  # "pharma"
   env               = var.env      # "dev"
@@ -57,7 +57,7 @@ module "iam" {
 }
 
 module "secrets_manager" {
-  source = "../../modules/secrets-manager"
+  source = "../../../modules/secrets-manager"
 
   project     = var.project  # "pharma"
   env         = var.env      # "dev"
