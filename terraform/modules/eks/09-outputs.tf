@@ -15,7 +15,7 @@ output "cluster_ca" {
 
 output "oidc_provider_arn" {
   description = "ARN of the OIDC Provider for IRSA"
-  value       = aws_iam_openid_connect_provider.eks_iodc.arn
+  value       = aws_iam_openid_connect_provider.eks_oidc.arn
 }
 
 output "oidc_provider_url" {
