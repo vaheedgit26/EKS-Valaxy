@@ -33,7 +33,6 @@ module "bastion_ec2" {
 
   # is_nat_instance             = var.is_nat_instance  # creates NAT instance if true
 
-
   project_name = var.project_name
   env          = var.env
   common_tags  = local.common_tags
