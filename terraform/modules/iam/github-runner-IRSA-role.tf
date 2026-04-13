@@ -1,5 +1,5 @@
 # GitHub Runner IRSA Role
-data "aws_iam_policy_document" "gitlab_runner_assume_role" {
+data "aws_iam_policy_document" "github_runner_assume_role" {
   statement {
     actions = ["sts:AssumeRoleWithWebIdentity"]
     effect  = "Allow"
@@ -7,7 +7,7 @@ data "aws_iam_policy_document" "gitlab_runner_assume_role" {
     condition {
       test     = "StringEquals"
       variable = "${replace(var.oidc_provider_url, "https://", "")}:sub"
-      values   = ["system:serviceaccount:gitlab-runner:gitlab-runner"]
+      values   = ["system:serviceaccount:github-runner:github-runner"]
     }
 
     condition {
@@ -23,20 +23,20 @@ data "aws_iam_policy_document" "gitlab_runner_assume_role" {
   }
 }
 
-resource "aws_iam_role" "gitlab_runner_role" {
-  name               = "${var.project}-${var.env}-gitlab-runner-role"
-  assume_role_policy = data.aws_iam_policy_document.gitlab_runner_assume_role.json
+resource "aws_iam_role" "github_runner_role" {
+  name               = "${var.project}-${var.env}-github-runner-role"
+  assume_role_policy = data.aws_iam_policy_document.github_runner_assume_role.json
 
   tags = {
-    Name    = "${var.project}-${var.env}-gitlab-runner-role"
+    Name    = "${var.project}-${var.env}-github-runner-role"
     Env     = var.env
     Project = var.project
   }
 }
 
-resource "aws_iam_policy" "gitlab_runner_policy" {
-  name        = "${var.project}-${var.env}-gitlab-runner-policy"
-  description = "Allow GitLab Runner to push to ECR and describe EKS"
+resource "aws_iam_policy" "github_runner_policy" {
+  name        = "${var.project}-${var.env}-github-runner-policy"
+  description = "Allow GitHub Runner to push to ECR and describe EKS"
 
   policy = jsonencode({
     Version = "2012-10-17"
@@ -70,7 +70,7 @@ resource "aws_iam_policy" "gitlab_runner_policy" {
   })
 }
 
-resource "aws_iam_role_policy_attachment" "gitlab_runner_policy_attachment" {
-  role       = aws_iam_role.gitlab_runner_role.name
-  policy_arn = aws_iam_policy.gitlab_runner_policy.arn
+resource "aws_iam_role_policy_attachment" "github_runner_policy_attachment" {
+  role       = aws_iam_role.github_runner_role.name
+  policy_arn = aws_iam_policy.github_runner_policy.arn
 }
