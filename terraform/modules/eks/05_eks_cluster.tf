@@ -23,8 +23,8 @@ resource "aws_eks_cluster" "main" {
   # Ensure IAM policy attachments complete before cluster creation
   # Helps avoid race conditions during provisioning and destroy
   depends_on = [
-    aws_iam_role_policy_attachment.eks_cluster_policy,
-    aws_iam_role_policy_attachment.eks_vpc_resource_controller
+    aws_iam_role_policy_attachment.eks_cluster_AmazonEKSClusterPolicy,
+    aws_iam_role_policy_attachment.eks_cluster_AmazonEKSVPCResourceController
   ]
 
   tags = {
