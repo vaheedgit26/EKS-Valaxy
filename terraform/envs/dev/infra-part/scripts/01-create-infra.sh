@@ -48,6 +48,17 @@ terraform plan \
   -var="project_name=$PROJECT_NAME" \
   -var="env=$ENV" \
   -var="region=$REGION"
+
+####################################################################
+# In VPC :: 
+#   project_name
+#   env
+#   region
+   
+# In EKS ::
+#   project
+#   env
+#   region
   
 echo "================================="
 echo " Step 4: Applying Terraform plan "
