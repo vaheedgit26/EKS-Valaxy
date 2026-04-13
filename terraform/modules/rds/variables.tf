@@ -18,9 +18,9 @@ variable "vpc_id" {
   type        = string
 }
 
-variable "eks_security_group_id" {
+variable "eks_security_group_ids" {
   description = "Security group ID of EKS worker nodes to allow RDS access"
-  type        = string
+  type        = list
 }
 
 variable "db_name" {
