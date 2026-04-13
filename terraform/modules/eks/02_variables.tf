@@ -14,7 +14,7 @@ variable cluster_endpoint_private_access { type = bool }
 
 variable cluster_endpoint_public_access { type = bool }
 
-variable eks_cluster_security_group_ids { type = list(string) }
+variable cluster_addl_security_group_ids { type = list(string) }
 
 
 #############################################             Node Group Variables           #################################################
