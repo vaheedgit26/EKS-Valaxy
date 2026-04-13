@@ -5,9 +5,14 @@ module "eks" {
 
   project             = var.project  # "pharma"
   env                 = var.env      # "dev"
+
   cluster_version     = "1.33"
   cluster_subnet_ids  = module.vpc.private_subnet_ids
+
   node_instance_types = ["t3.small"]
+  node_addl_sg_ids    = [module.bastion_sg.sg_id]
+  node_ssh_public_key = "us-east-1"
+
   desired_capacity    = 3
   min_size            = 2
   max_size            = 4
