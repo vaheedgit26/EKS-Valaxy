@@ -3,8 +3,8 @@ data "aws_caller_identity" "current" {}
 module "eks" {
   source = "../../modules/eks"
 
-  project             = "pharma"
-  env                 = "dev"
+  project             = var.project  # "pharma"
+  env                 = var.env      # "dev"
   cluster_version     = "1.33"
   cluster_subnet_ids  = module.vpc.private_subnet_ids
   node_instance_types = ["t3.small"]
@@ -16,8 +16,8 @@ module "eks" {
 module "rds" {
   source = "../../modules/rds"
 
-  project               = "pharma"
-  env                   = "dev"
+  project               = var.project  # "pharma"
+  env                   = var.env      # "dev"
   subnet_ids            = module.vpc.database_subnet_ids
   vpc_id                = module.vpc.vpc_id
   eks_security_group_id = module.eks.cluster_security_group_id
@@ -29,8 +29,8 @@ module "rds" {
 module "ecr" {
   source = "../../modules/ecr"
 
-  project = "pharma"
-  env     = "dev"
+  project = var.project  # "pharma"
+  env     = var.env      # "dev"
   repositories = [
     "api-gateway",
     "auth-service",
@@ -43,8 +43,8 @@ module "ecr" {
 module "iam" {
   source = "../../modules/iam"
 
-  project           = "pharma"
-  env               = "dev"
+  project           = var.project  # "pharma"
+  env               = var.env      # "dev"
   oidc_provider_arn = module.eks.oidc_provider_arn
   oidc_provider_url = module.eks.oidc_provider_url
   aws_account_id    = data.aws_caller_identity.current.account_id
@@ -53,8 +53,8 @@ module "iam" {
 module "secrets_manager" {
   source = "../../modules/secrets-manager"
 
-  project     = "pharma"
-  env         = "dev"
+  project     = var.project  # "pharma"
+  env         = var.env      # "dev"
   db_username = "pharmaadmin"
   db_password = var.db_password
   jwt_secret  = var.jwt_secret
