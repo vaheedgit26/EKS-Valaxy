@@ -27,3 +27,14 @@ terraform destroy \
 #  -out=destroy.tfplan
 
 # terraform apply destroy.tfplan
+
+####################################################################
+# In VPC :: 
+#   project_name
+#   env
+#   region
+   
+# In EKS ::
+#   project
+#   env
+#   region
