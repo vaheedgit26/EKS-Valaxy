@@ -10,7 +10,7 @@ module "eks" {
   cluster_subnet_ids  = module.vpc.private_subnet_ids
   cluster_endpoint_private_access = true
   cluster_endpoint_public_access  = false
-  eks_cluster_security_group_ids  = [module.bastion_sg.sg_id]  # This is additional SG and the default SG is intact
+  eks_cluster_security_group_ids  = [module.bastion_sg.sg_id]  # This is additional cluster SG and the default cluster SG is intact
 
   node_subnet_ids     = module.vpc.private_subnet_ids
   node_instance_types = ["t3.small"]
