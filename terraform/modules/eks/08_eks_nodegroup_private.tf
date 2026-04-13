@@ -9,8 +9,8 @@ resource "aws_eks_node_group" "main" {
   disk_size       = var.node_disk_size
 
   remote_access {
-    ec2_ssh_key               = "my-key"
-    source_security_group_ids = [bastion_sg]
+    ec2_ssh_key               = var.node_ssh_public_key    # "my-key"
+    source_security_group_ids = var.node_addl_sg_ids       # [bastion_sg]
   }
 
   scaling_config {
