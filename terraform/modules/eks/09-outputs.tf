@@ -33,7 +33,7 @@ output "cluster_security_group_id" {
   value       = aws_eks_cluster.main.vpc_config[0].cluster_security_group_id
 }
 
-output "to_configure_kubectl" {
-  description = "Command to update local kubeconfig to connect to the EKS cluster"
-  value       = "aws eks --region ${var.region} update-kubeconfig --name ${local.eks_cluster_name}"
-}
+#output "to_configure_kubectl" {
+#  description = "Command to update local kubeconfig to connect to the EKS cluster"
+#  value       = "aws eks --region ${var.region} update-kubeconfig --name ${local.eks_cluster_name}"
+#}
