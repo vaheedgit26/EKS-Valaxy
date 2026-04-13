@@ -6,6 +6,9 @@ module "eks" {
   project             = var.project  # "pharma"
   env                 = var.env      # "dev"
 
+  public_subnet_ids   = [data.terraform_remote_state.vpc.outputs.public_subnet_ids]      # For Tagging
+  private_subnet_ids  = [data.terraform_remote_state.vpc.outputs.private_subnet_ids]     # For Tagging
+
   cluster_version                 = "1.33"
   cluster_subnet_ids              = [data.terraform_remote_state.vpc.outputs.private_subnet_ids]
   cluster_endpoint_private_access = true
