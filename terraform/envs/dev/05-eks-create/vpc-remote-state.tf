@@ -5,8 +5,8 @@ data "terraform_remote_state" "vpc" {
   backend = "s3"
 
   config = {
-    bucket = var.s3_bucket_id                                             # "tfstate-dev-us-east-1-jpjtof"     # Name of the remote S3 bucket where the VPC state is stored
-    key    = "${var.project}/${var.env}/vpc/terraform.tfstate"            # "vpc/dev/terraform.tfstate"      # Path to the VPC tfstate file within the bucket
+    bucket = var.s3_bucket_id                                             # Name of the remote S3 bucket where the VPC state is stored (gets value from 'bash script')
+    key    = "${var.project}/${var.env}/vpc/terraform.tfstate"            # "pharma/dev/vpc/terraform.tfstate"     # Path to the VPC tfstate file within the bucket
     region = var.region                                                   # Region where the S3 bucket and DynamoDB table exist (gets value from 'bash script')
   }
 }
