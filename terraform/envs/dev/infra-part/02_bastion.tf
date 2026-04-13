@@ -17,3 +17,24 @@ resource "aws_security_group_rule" "bastion_internet" {
   cidr_blocks       = ["0.0.0.0/0"]
   security_group_id = module.bastion_sg.sg_id    # aws_security_group.sg_nat_instance.id
 }
+
+module "bastion_ec2" {
+  source = "git::https://github.com/vaheedgit26/Infra.git//modules/ec2"
+
+  ami_id                      = var.ami_id
+  instance_type               = "t3.micro"                        # var.instance_type
+  public_key_name             = var.public_key_name
+  sg_id                       = module.bastion_sg.sg_id           # [local.sg_id]
+  subnet_id                   = module.vpc.public_subnet_ids[0]   # local.public_subnet_ids[0] # "subnet-088e8443a70102e2a" #1a
+  associate_public_ip_address = true
+  what_type_instance          = "bastion"
+
+  # user_data = file("${path.module}/mysql_client_8.sh")
+
+  # is_nat_instance             = var.is_nat_instance  # creates NAT instance if true
+
+
+  project_name = var.project_name
+  env          = var.env
+  common_tags  = local.common_tags
+}
