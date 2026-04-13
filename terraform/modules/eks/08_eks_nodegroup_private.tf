@@ -8,6 +8,11 @@ resource "aws_eks_node_group" "main" {
   capacity_type   = var.node_capacity_type   # ON_DEMAND/ SPOT
   disk_size       = var.node_disk_size
 
+  remote_access {
+    ec2_ssh_key               = "my-key"
+    source_security_group_ids = [bastion_sg]
+  }
+
   scaling_config {
     desired_size = var.desired_capacity
     min_size     = var.min_size
