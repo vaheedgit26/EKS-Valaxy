@@ -47,7 +47,8 @@ terraform plan \
   -out=eks.tfplan \
   -var="project=$PROJECT_NAME" \
   -var="env=$ENV" \
-  -var="region=$REGION"
+  -var="region=$REGION" \
+  -var="s3_bucket_id=$BUCKET" 
   
 echo "================================="
 echo " Step 4: Applying Terraform plan "
