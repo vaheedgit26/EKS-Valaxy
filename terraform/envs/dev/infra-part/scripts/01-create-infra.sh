@@ -48,6 +48,12 @@ terraform plan \
   -var="project_name=$PROJECT_NAME" \
   -var="env=$ENV" \
   -var="region=$REGION"
+  
+echo "================================="
+echo " Step 4: Applying Terraform plan "
+echo "================================="
+terraform apply infra.tfplan    # -auto-approve
+
 
 ####################################################################
 # In VPC :: 
@@ -59,8 +65,3 @@ terraform plan \
 #   project
 #   env
 #   region
-  
-echo "================================="
-echo " Step 4: Applying Terraform plan "
-echo "================================="
-terraform apply infra.tfplan    # -auto-approve
