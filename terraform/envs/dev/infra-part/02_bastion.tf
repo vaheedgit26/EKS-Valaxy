@@ -15,7 +15,7 @@ resource "aws_security_group_rule" "bastion_internet" {
   to_port           = 22
   protocol          = "tcp"
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = module.bastion_sg.sg_id    # aws_security_group.sg_nat_instance.id
+  security_group_id = module.bastion_sg.sg_id                     # aws_security_group.sg_nat_instance.id
 }
 
 module "bastion_ec2" {
