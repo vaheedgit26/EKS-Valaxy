@@ -29,7 +29,7 @@ cd ..
 
 terraform init -upgrade \
   -backend-config="bucket=${BUCKET}" \
-  -backend-config="key=${PROJECT_NAME}/${ENV}/infra/terraform.tfstate" \
+  -backend-config="key=${PROJECT_NAME}/${ENV}/eks/terraform.tfstate" \
   -backend-config="region=${REGION}" \
   -backend-config="encrypt=true" \
   -backend-config="use_lockfile=true"
@@ -44,8 +44,8 @@ echo " Step 3: Generating Terraform plan "
 echo "==================================="
 # terraform plan
 terraform plan \
-  -out=infra1.tfplan \
-  -var="project_name=$PROJECT_NAME" \
+  -out=eks.tfplan \
+  -var="project=$PROJECT_NAME" \
   -var="env=$ENV" \
   -var="region=$REGION"
   
@@ -54,3 +54,14 @@ echo " Step 4: Applying Terraform plan "
 echo "================================="
 terraform apply 
 # terraform apply infra.tfplan    # -auto-approve
+
+# In VPC :: 
+#   project_name
+#   env
+#   region
+   
+# In EKS ::
+#   project
+#   env
+#   region
+
