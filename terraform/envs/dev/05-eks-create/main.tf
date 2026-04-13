@@ -6,11 +6,11 @@ module "eks" {
   project             = var.project  # "pharma"
   env                 = var.env      # "dev"
 
-  public_subnet_ids   = [data.terraform_remote_state.vpc.outputs.public_subnet_ids]      # For Tagging
-  private_subnet_ids  = [data.terraform_remote_state.vpc.outputs.private_subnet_ids]     # For Tagging
+  public_subnet_ids   = data.terraform_remote_state.vpc.outputs.public_subnet_ids      # For Tagging (since vpc outputs as list, so [] not required)
+  private_subnet_ids  = data.terraform_remote_state.vpc.outputs.private_subnet_ids     # For Tagging (since vpc outputs as list, so [] not required)
 
   cluster_version                  = "1.33"
-  cluster_subnet_ids               = [data.terraform_remote_state.vpc.outputs.private_subnet_ids]
+  cluster_subnet_ids               = data.terraform_remote_state.vpc.outputs.private_subnet_ids  # (since vpc outputs as list, so [] not required)
   cluster_endpoint_private_access  = true
   cluster_endpoint_public_access   = false
   cluster_addl_security_group_ids  = [data.terraform_remote_state.vpc.outputs.bastion_host_sg_id]  # This is additional cluster SG and the default cluster SG is intact
@@ -31,7 +31,7 @@ module "rds" {
 
   project               = var.project  # "pharma"
   env                   = var.env      # "dev"
-  subnet_ids            = [data.terraform_remote_state.vpc.outputs.database_subnet_ids]
+  subnet_ids            = data.terraform_remote_state.vpc.outputs.database_subnet_ids  # (since vpc outputs as list, so [] not required)
   vpc_id                = data.terraform_remote_state.vpc.outputs.vpc_id
   # eks_security_group_id = module.eks.cluster_security_group_id
   rds_allowed_security_group_ids = [module.eks.cluster_security_group_id, data.terraform_remote_state.vpc.outputs.bastion_host_sg_id]
