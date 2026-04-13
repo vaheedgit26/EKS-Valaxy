@@ -79,3 +79,14 @@ env=$TF_VAR_env
 region=$TF_VAR_region
 bucket=$TF_VAR_bucket
 EOF
+
+#######################################################################
+# In VPC :: 
+#   project_name
+#   env
+#   region
+   
+# In EKS ::
+#   project
+#   env
+#   region
