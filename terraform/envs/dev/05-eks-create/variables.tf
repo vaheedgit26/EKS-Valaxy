@@ -1,4 +1,4 @@
-variable "region" {}
+variable "region" {}     # This value can be taken from provider.tf
 variable "project" {}
 variable "env" {}
 
