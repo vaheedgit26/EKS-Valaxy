@@ -23,9 +23,10 @@ echo """
 cd ..
 
 terraform destroy \
-  -var="project_name=$PROJECT_NAME" \
+  -var="project=$PROJECT_NAME" \
   -var="env=$ENV" \
-  -var="region=$REGION"
+  -var="region=$REGION" \
+  -var="s3_bucket_id=$BUCKET"
   # -auto-approve
 
 
